@@ -1,4 +1,4 @@
-# Personal Developer Portfolio Website
+# Luka's Developer Portfolio Website
 
 This repository contains the source code for my personal portfolio website. It was built to introduce myself and showcase my projects, skills, and development journey.
 
@@ -8,7 +8,7 @@ The project structure was generated using **Vite** for fast development and bund
 ## Development
 
 To run the project locally:
-
-```bash
-npm install
-npm run dev
+    
+    cd <project-root>
+    npm install
+    npm run dev
