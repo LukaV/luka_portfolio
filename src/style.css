@@ -163,6 +163,16 @@ img:hover {
   --shadow-colour-b: #5865F2;
 }
 
+.flutter-icon {
+  --shadow-colour-a: #45D1FD;
+  --shadow-colour-b: #02539A;
+}
+
+.dart-icon {
+  --shadow-colour-a: #03589C;
+  --shadow-colour-b: #40C4FF;
+}
+
 .description {
   display: flex;
   flex-direction: column;
