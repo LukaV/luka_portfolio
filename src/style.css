@@ -12,7 +12,8 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-html, body {
+html,
+body {
   overflow-x: clip;
   width: auto;
   height: auto;
@@ -31,9 +32,29 @@ body {
 }
 
 h1 {
-  font-size: clamp(1rem, 14vw, 4.2rem);
+  font-size: clamp(3rem, 7vw, 1000px);
+}
+
+h2 {
+  font-size: clamp(2rem, 5vw, 4.2rem);
+  margin: 0;
+}
+
+h1,
+h2 {
   letter-spacing: 2px;
   line-height: 1.1;
+}
+
+p {
+  font-size: clamp(1rem, 3vh, 32px);
+  margin: 10px;
+}
+
+@media only screen and (max-width: 425px) {
+  p {
+    font-size: 25px;
+  }
 }
 
 /* Section 1. */
@@ -69,7 +90,6 @@ h1 {
 
 #projects-exp-title {
   position: relative;
-  font-size: clamp(4.2rem, 7vw, 1000px);
   text-align: center;
 }
 
@@ -91,11 +111,47 @@ h1 {
 
 .project {
   width: 100vw;
-  padding-top: 1px;
-  height: 0;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-align: center;
 }
 
+img {
+  height: 7vh;
+  width: auto;
+  margin: 2vw;
+  padding: 5px;
+  border-radius: 20%;
+  transition: box-shadow 300ms;
+}
+
+img:hover {
+  filter: none;
+  transition: box-shadow 300ms;
+  box-shadow: -6px -4px 10px var(--shadow-colour-a), 6px 4px 10px var(--shadow-colour-b);
+}
+
+.python-icon {
+  --shadow-colour-a: #0176BB;
+  --shadow-colour-b: #FDBF07;
+}
+
+.pandas-icon {
+  --shadow-colour-a: #1A237E;
+  --shadow-colour-b: #FF4081;
+}
+
+.numpy-icon {
+  --shadow-colour-a: #4D77CF;
+  --shadow-colour-b: #4DABCF;
+}
+
+.tensorflow-icon {
+  --shadow-colour-a: #E55B2D;
+  --shadow-colour-b: #ED8E24;
+}
+
+.keras-icon {
+  /* Remove the padding since the icon has no transparent border */
+  padding: 0;
+  --shadow-colour-a: #A80000;
+  --shadow-colour-b: #111;
+}

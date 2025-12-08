@@ -17,7 +17,7 @@ function introSection(): void {
 
 /**
  * Animates the project title and horizontally scrolls across each project.
- */
+*/
 function projectExperienceSection(): void {
   const section: HTMLElement = document.querySelector("#horizontal-project-exp-section") as HTMLElement;
   const titleText: HTMLElement = document.querySelector("#projects-exp-title") as HTMLElement;
@@ -45,11 +45,13 @@ function projectExperienceSection(): void {
   const project1: HTMLElement = document.querySelector("#project-1") as HTMLElement;
   const project2: HTMLElement = document.querySelector("#project-2") as HTMLElement;
   const project3: HTMLElement = document.querySelector("#project-3") as HTMLElement;
+  const project4: HTMLElement = document.querySelector("#project-4") as HTMLElement;
 
   // Get each project's x-axis location.
   const project1XAxis = project1.getBoundingClientRect().x;
   const project2XAxis = project2.getBoundingClientRect().x;
   const project3XAxis = project3.getBoundingClientRect().x;
+  const project4XAxis = project4.getBoundingClientRect().x;
 
   const titleEase: string = "sine.inOut"
   const projectEase: string = "none"
@@ -72,11 +74,13 @@ function projectExperienceSection(): void {
     .to(projectsWrapper, { x: -project2XAxis, ease: projectEase})
     .addLabel("project3")
     .to(projectsWrapper, { x: -project3XAxis, ease: projectEase})
+    .addLabel("project4")
+    .to(projectsWrapper, { x: -project4XAxis, ease: projectEase})
 
     // Title and last project fade out at the same time.
     .addLabel("end")
     .to(titleText, { opacity: 0, ease: "none"})
-    .to(project3, { opacity: 0, ease: "none"}, "<")
+    .to(project4, { opacity: 0, ease: "none"}, "<")
 }
 
 
