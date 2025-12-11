@@ -85,6 +85,9 @@ function projectExperienceSection(): void {
 }
 
 
+/** 
+ * Animate the skills title svg.
+ */
 function skillsSection(): void {
   const section: HTMLElement = document.querySelector("#vertical-skills-section") as HTMLElement;
   let timeline: gsap.core.Timeline = gsap.timeline({
