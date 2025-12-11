@@ -2,9 +2,10 @@ import './style.css'
 import gsap from "gsap";
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import Lenis from 'lenis';
+import MorphSVGPlugin from 'gsap/MorphSVGPlugin';
 
-// ScrollTrigger Plugin used with Lenis to sync animations with scrolling. 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger); // ScrollTrigger Plugin used with Lenis to sync animations with scrolling. 
+gsap.registerPlugin(MorphSVGPlugin);
 
 /**
  * Animates the last name when the webpage loads.
@@ -35,7 +36,7 @@ function projectExperienceSection(): void {
       snap: {
         snapTo: 'labels',
         duration: { min: 0.2, max: 3 },
-        delay: 0.2, 
+        delay: 0.2,
         ease: 'sine.inOut'
       }
     }
@@ -69,23 +70,46 @@ function projectExperienceSection(): void {
 
     // Projects. Moves the wrapper to each project's x-axis.
     .addLabel("project1")
-    .to(projectsWrapper, { x: -project1XAxis, ease: projectEase})
+    .to(projectsWrapper, { x: -project1XAxis, ease: projectEase })
     .addLabel("project2")
-    .to(projectsWrapper, { x: -project2XAxis, ease: projectEase})
+    .to(projectsWrapper, { x: -project2XAxis, ease: projectEase })
     .addLabel("project3")
-    .to(projectsWrapper, { x: -project3XAxis, ease: projectEase})
+    .to(projectsWrapper, { x: -project3XAxis, ease: projectEase })
     .addLabel("project4")
-    .to(projectsWrapper, { x: -project4XAxis, ease: projectEase})
+    .to(projectsWrapper, { x: -project4XAxis, ease: projectEase })
 
     // Title and last project fade out at the same time.
     .addLabel("end")
-    .to(titleText, { opacity: 0, ease: "none"})
-    .to(project4, { opacity: 0, ease: "none"}, "<")
+    .to(projectsWrapper, { x: "-=100vw", ease: projectEase }) // Finish with nothing on the screen except the title.
+    .to(titleText, { opacity: 0, ease: "none" }) // Fade the title off the screen.
+}
+
+
+function skillsSection(): void {
+  const section: HTMLElement = document.querySelector("#vertical-skills-section") as HTMLElement;
+  let timeline: gsap.core.Timeline = gsap.timeline({
+    scrollTrigger: {
+      trigger: section,
+      pin: true,
+      start: 'top top', // start the animation when the trigger hits the top of the viewport.
+      end: `+=${section.scrollWidth + 500}`,
+      scrub: 1,
+      invalidateOnRefresh: true,
+    }
+  });
+
+  timeline.to("#person", { morphSVG: "#i-dot", duration: 2, x: "+=40vw", y: "+=125vh" })
+    .to("#dash-2", { morphSVG: "#s-1", duration: 3, x: "+=40vw", y: "+=125vh" })
+    .to("#dash-1", { morphSVG: "#k", duration: 3, x: "+=40vw", y: "+=125vh" }, "<")
+    .to("#dash-3", { morphSVG: "#i-line", duration: 3, x: "+=40vw", y: "+=125vh" }, "<")
+    .to("#dash-4", { morphSVG: "#l-1", duration: 3, x: "+=40vw", y: "+=125vh" }, "<")
+    .to("#dash-5", { morphSVG: "#l-2", duration: 3, x: "+=40vw", y: "+=125vh" }, "<")
+    .to("#dash-6", { morphSVG: "#s-2", duration: 3, x: "+=40vw", y: "+=125vh" }, "<")
 }
 
 
 // Initialise Lenis.
-const lenis = new Lenis({autoRaf: true});
+const lenis = new Lenis({ autoRaf: true });
 
 // Connect GSAP ScrollTrigger to sync animations with scrolling.
 lenis.on('scroll', ScrollTrigger.update);
@@ -93,3 +117,4 @@ lenis.on('scroll', ScrollTrigger.update);
 // Call functions.
 introSection();
 projectExperienceSection();
+skillsSection();
