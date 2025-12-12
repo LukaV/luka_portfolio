@@ -61,6 +61,24 @@ li {
 }
 
 /* Section 1: Intro.*/
+#github-icon,
+#linkedin-icon {
+  height: 3vh;
+  width: auto;
+  margin: 5px;
+  padding: 0;
+}
+
+@media only screen and (max-width: 768px) {
+  #github-icon,
+  #linkedin-icon {
+    height: 5vh;
+    width: auto;
+    margin: 5px;
+    padding: 0;
+  }
+}
+
 #name-title {
   height: 50%;
   width: 100vw;
